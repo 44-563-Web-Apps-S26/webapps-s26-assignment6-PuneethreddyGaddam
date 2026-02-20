@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Villain Input Form</title>
+</head>
+<body>
+
+<h2>Villains by Puneeth Reddy Gaddam</h2>
+
+<form>
+    <label for="funny_man">Funny Man </label>
+    <input type="password" id="funny_man" name="funny_man" value="Joker"> <br>
+
+    <label for="guess_villain">Guess the villain </label>
+    <input type="text" id="guess_villain" name="guess_villain" autofocus> <br>
+
+    <input type="button" onclick="checkVillain()" value="Check the guess">
+</form>
+
+
+<p id="result">Caught: 0 | Got away: 0</p>
+
+<script> 
+
+let caught = 0
+let gotAway = 0
+
+function checkVillain (){
+    const secretVillain = document.getElementById("funny_man").value
+    const guessedVillain = document.getElementById("guess_villain").value
+
+    if(secretVillain === guessedVillain){
+        caught = caught + 1
+        alert("You caught them")
+    } else {
+        gotAway = gotAway + 1
+        alert("Maybe next time")
+    }
+
+    document.getElementById("result").innerHTML = "Caught: " + caught + " | Got away: " + gotAway
+}
+</script>
+
+</body>
+</html> 
