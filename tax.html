@@ -23,7 +23,19 @@
     <input type="button" onclick="doTax()" value="Show tax table">
 </form>
 
+<form>
+    <input type="radio" id="opExponent" name="operation" value="exponent" onclick="chooseOp()" checked>
+    <label for="opExponent">power</label><br>
+
+    <input type="radio" id="opAdd" name="operation" value="add" onclick="chooseOp()">
+    <label for="opAdd">sum</label><br>
+
+    <input type="radio" id="opMod" name="operation" value="mod" onclick="chooseOp()">
+    <label for="opMod">mod</label><br>
+</form>
+
 <p id="result">This text will be replaced</p>
+<p id="opResult">Operation result will be shown here</p>
 
 <script>
 function doTax() {
@@ -48,6 +60,25 @@ function doTax() {
     }
 
     document.getElementById("result").innerHTML = "Taxes are: " + taxTable;
+}
+
+function chooseOp() {
+    const income = Number(document.getElementById("income").value);
+    const baseRate = Number(document.getElementById("baseRate").value);
+    let outText = "";
+
+    if (document.getElementById("opExponent").checked) {
+        const value = income ** baseRate;
+        outText = income + " to the power of " + baseRate + " is " + value;
+    } else if (document.getElementById("opAdd").checked) {
+        const value = income + baseRate;
+        outText = income + " + " + baseRate + " is " + value;
+    } else if (document.getElementById("opMod").checked) {
+        const value = income % baseRate;
+        outText = income + "%" + baseRate + " is " + value;
+    }
+
+    document.getElementById("opResult").innerHTML = outText;
 }
 </script>
 
