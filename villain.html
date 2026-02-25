@@ -17,19 +17,22 @@
     <input type="button" onclick="checkVillain()" value="Check the guess">
 </form>
 
-
 <p id="result">Caught: 0 | Got away: 0</p>
 
-<script> 
+<div>
+    <img id="treePic" src="images/Tree 1.png" alt="Tree image" width="150" height="150" onclick="updatePic()">
+</div>
 
+<script>
 let caught = 0
 let gotAway = 0
+let usePic = 1
 
-function checkVillain (){
+function checkVillain() {
     const secretVillain = document.getElementById("funny_man").value
     const guessedVillain = document.getElementById("guess_villain").value
 
-    if(secretVillain === guessedVillain){
+    if (secretVillain === guessedVillain) {
         caught = caught + 1
         alert("You caught them")
     } else {
@@ -39,7 +42,26 @@ function checkVillain (){
 
     document.getElementById("result").innerHTML = "Caught: " + caught + " | Got away: " + gotAway
 }
+
+function updatePic() {
+    const treeImage = document.getElementById("treePic")
+
+    switch (usePic) {
+        case 1:
+            treeImage.src = "images/Tree 1.png"
+            usePic = 2
+            break
+        case 2:
+            treeImage.src = "images/Tree 2.png"
+            usePic = 3
+            break
+        case 3:
+            treeImage.src = "images/Tree 3.png"
+            usePic = 1
+            break
+    }
+}
 </script>
 
 </body>
-</html> 
+</html>
