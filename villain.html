@@ -14,10 +14,10 @@
     <label for="guess_villain">Guess the villain </label>
     <input type="text" id="guess_villain" name="guess_villain" autofocus> <br>
 
-    <input type="button" onclick="checkVillain()" value="Check the guess">
+    <input type="button" id="checkBtn" onclick="checkVillain()" value="Check the guess">
 </form>
 
-<p id="result">Caught: 0 | Got away: 0</p>
+<div id="result">Caught: 0 | Got away: 0</div>
 
 <div>
     <img id="treePic" src="images/Tree 1.png" alt="Tree image" width="150" height="150" onclick="updatePic()">
@@ -41,6 +41,14 @@ function checkVillain() {
     }
 
     document.getElementById("result").innerHTML = "Caught: " + caught + " | Got away: " + gotAway
+
+    if (gotAway > 10) {
+        document.getElementById("checkBtn").setAttribute("onclick", "tooManyGuesses()")
+    }
+}
+
+function tooManyGuesses() {
+    alert("Sorry, too many wrong guesses.")
 }
 
 function updatePic() {
